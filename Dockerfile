@@ -22,8 +22,8 @@ WORKDIR /opt
 RUN curl -SL https://dl.bintray.com/sbt/native-packages/sbt/${SBT_VERSION}/sbt-${SBT_VERSION}.tgz | tar xz
 COPY sbt-with-xvfb.sh .
 
-VOLUME ["/cache/.sbt", "/cache/.ivy2"]
-
 WORKDIR /app
+
+VOLUME ["/app", "/cache/.sbt", "/cache/.ivy2"]
 
 ENTRYPOINT ["/opt/sbt-with-xvfb.sh"]
