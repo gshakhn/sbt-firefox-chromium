@@ -1,8 +1,8 @@
 FROM java:jdk-alpine
 MAINTAINER George Shakhnazaryan
 
-ENV CHROMIUM_VERSION=47.0.2526.106-r0
-ENV FIREFOX_VERSION=38.3.0-r1
+ENV CHROMIUM_VERSION=49.0.2623.110-r1
+ENV FIREFOX_VERSION=45.2.0-r0
 ENV SBT_VERSION=0.13.11
 
 RUN apk --no-cache add \
@@ -10,7 +10,7 @@ RUN apk --no-cache add \
   curl \
   chromium=$CHROMIUM_VERSION \
   dbus \
-  firefox=$FIREFOX_VERSION \
+  firefox-esr=$FIREFOX_VERSION \
   libexif \
   udev \
   xvfb
