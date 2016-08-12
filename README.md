@@ -19,3 +19,14 @@ The `-v $HOME/.sbt:/cache/.sbt -v $HOME/.ivy2:/cache/.ivy2` flags are theoretica
 You may also want to add `-p 8080:8080` to expose any web server you start in SBT. I use [sbt-revolver](https://github.com/spray/sbt-revolver).
 
 See [this blog post](http://www.gshakhn.com/2016/04/16/on-running-scalajs-tests-in-a-browser.html) on how to configure SBT to run ScalaJS tests in the browser.
+
+# Xephyr
+
+If you want to actually see Firefox or Chromium running (aka non-headless), you can make it show up in Xephyr running on the host machine.
+
+    Xephyr :1 -ac -screen 1280x1024 -listen tcp &
+    docker run -it -e DISPLAY=<YOUR_HOST_IP>:1-v $(pwd):/app -v $HOME/.sbt:/cache/.sbt -v $HOME/.ivy2:/cache/.ivy2 --rm gshakhn/sbt-firefox-chromium
+
+Substitute `YOUR_HOST_IP` with your local machine's IP where Xephyr is running.
+
+[This blog post](https://www.gshakhn.com/2016/05/23/on-running-X11-apps-in-docker-on-OSX.html) for more information on the pros/cons of this approach.
