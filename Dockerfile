@@ -12,6 +12,7 @@ RUN apk --no-cache add \
   dbus \
   firefox-esr=$FIREFOX_VERSION \
   libexif \
+  ttf-freefont \
   udev \
   xvfb
 
